@@ -7,6 +7,7 @@ let config = function($stateProvider) {
     })
     .state('root.home', {
       url: '/',
+      controller: 'HomeController',
       templateUrl: 'templates/home.tpl.html'
     });
 

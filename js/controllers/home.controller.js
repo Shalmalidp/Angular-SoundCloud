@@ -1,6 +1,6 @@
 let HomeController = function($scope) {
   
-  
+  $scope.hello = 'world';
 
 };
 
