@@ -6,3 +6,10 @@
 </form>
 
 <hr>
+
+<ul class="small-block-grid-3">
+  <li class="track" ng-repeat="song in songs" ng-click="playMe(song)">
+    <img ng-if="song.artwork_url" ng-src="{{ song.artwork_url }}">
+    <p class="trackInfo">{{ song.title }}</p>
+  </li>
+</ul>

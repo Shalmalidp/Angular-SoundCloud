@@ -8,7 +8,7 @@ let HomeController = function($scope, SC, $http) {
 
     $http.get(url + '&q=' + query).then( (res) => {
 
-      console.log(res);
+      $scope.songs = res.data;
 
     });
 

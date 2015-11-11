@@ -37,7 +37,7 @@ var HomeController = function HomeController($scope, SC, $http) {
 
     $http.get(url + '&q=' + query).then(function (res) {
 
-      console.log(res);
+      $scope.songs = res.data;
     });
   };
 };
