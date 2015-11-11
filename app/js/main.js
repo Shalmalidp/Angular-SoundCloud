@@ -27,12 +27,22 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var HomeController = function HomeController($scope) {
+var HomeController = function HomeController($scope, SC, $http) {
 
-  $scope.hello = 'world';
+  var url = 'http://api.soundcloud.com/tracks?client_id=' + SC;
+
+  $scope.search = function (query) {
+
+    query = encodeURI(query);
+
+    $http.get(url + '&q=' + query).then(function (res) {
+
+      console.log(res);
+    });
+  };
 };
 
-HomeController.$inject = ['$scope'];
+HomeController.$inject = ['$scope', 'SC', '$http'];
 
 exports['default'] = HomeController;
 module.exports = exports['default'];
@@ -56,7 +66,7 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']);
+_angular2['default'].module('app', ['ui.router']).constant('SC', '095fe1dcd09eb3d0e1d3d89c76f5618f').config(_config2['default']).controller('HomeController', _controllersHomeController2['default']);
 
 },{"./config":1,"./controllers/home.controller":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
 /**

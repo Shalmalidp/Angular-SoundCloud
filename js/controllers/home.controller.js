@@ -1,9 +1,21 @@
-let HomeController = function($scope) {
+let HomeController = function($scope, SC, $http) {
   
-  $scope.hello = 'world';
+  let url = 'http://api.soundcloud.com/tracks?client_id=' + SC;
+
+  $scope.search = (query) => {
+    
+    query = encodeURI(query);
+
+    $http.get(url + '&q=' + query).then( (res) => {
+
+      console.log(res);
+
+    });
+
+  };
 
 };
 
-HomeController.$inject = ['$scope'];
+HomeController.$inject = ['$scope', 'SC', '$http'];
 
 export default HomeController;
