@@ -27,22 +27,25 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var HomeController = function HomeController($scope, SC, $http) {
+var HomeController = function HomeController($scope, SC, $http, $sce) {
 
   var url = 'http://api.soundcloud.com/tracks?client_id=' + SC;
 
   $scope.search = function (query) {
-
     query = encodeURI(query);
 
     $http.get(url + '&q=' + query).then(function (res) {
-
       $scope.songs = res.data;
     });
   };
+
+  $scope.playMe = function (song) {
+    $scope.audio = $sce.trustAsResourceUrl(song.stream_url + '?client_id=' + SC);
+    $scope.playing = song;
+  };
 };
 
-HomeController.$inject = ['$scope', 'SC', '$http'];
+HomeController.$inject = ['$scope', 'SC', '$http', '$sce'];
 
 exports['default'] = HomeController;
 module.exports = exports['default'];
